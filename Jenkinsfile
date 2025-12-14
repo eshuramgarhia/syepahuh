@@ -1,5 +1,9 @@
-pipeline {
+  pipeline {
     agent any
+
+    tools {
+        nodejs 'Nodejs'   // Jenkins > Global Tool Configuration ch NodeJS name
+    }
 
     environment {
         NODE_ENV = 'any'
@@ -9,7 +13,8 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/eshuramgarhia/syepahuh.git'
+                git branch: 'main',
+                    url: 'https://github.com/USERNAME/REPO_NAME.git'
             }
         }
 
@@ -25,10 +30,25 @@ pipeline {
             }
         }
 
-        stage('Start Server') {
+        stage('Build (optional)') {
+            steps {
+                echo 'No build step for backend'
+            }
+        }
+
+        stage('Start App') {
             steps {
                 sh 'npm start'
             }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Build Successful'
+        }
+        failure {
+            echo '❌ Build Failed'
         }
     }
 }
