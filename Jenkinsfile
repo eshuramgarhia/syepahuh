@@ -14,7 +14,7 @@
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/USERNAME/REPO_NAME.git'
+                    url: 'https://github.com/eshuramgarhia/syepahuh.git'
             }
         }
 
