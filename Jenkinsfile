@@ -20,35 +20,15 @@
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'npm test'
+                bat 'npm test'
             }
         }
 
-        stage('Build (optional)') {
-            steps {
-                echo 'No build step for backend'
-            }
-        }
-
-        stage('Start App') {
-            steps {
-                sh 'npm start'
-            }
-        }
     }
-
-    post {
-        success {
-            echo '✅ Build Successful'
-        }
-        failure {
-            echo '❌ Build Failed'
-        }
-    }
-}
+  }
